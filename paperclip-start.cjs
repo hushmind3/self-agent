@@ -20,7 +20,8 @@ async function main() {
   if (process.platform === 'win32' && env.DATABASE_URL === defaultUrl) {
     env.Path = path.join(process.env.SystemRoot || 'C:\\Windows', 'System32') + ';' + (env.Path || env.PATH || '');
     const requireDb = createRequire(path.join(root, 'Paperclip', 'packages', 'db', 'package.json'));
-    const native = await import(pathToFileURL(requireDb.resolve('@embedded-postgres/windows-x64')).href);
+    const requireNative = createRequire(requireDb.resolve('embedded-postgres'));
+    const native = await import(pathToFileURL(requireNative.resolve('@embedded-postgres/windows-x64')).href);
     const nativeRoot = path.dirname(path.dirname(native.initdb));
     const key = require('node:crypto').createHash('sha256').update(nativeRoot).digest('hex').slice(0, 12);
     const alias = path.join(os.homedir(), '.paperclip', 'native', 'self-agent-' + key);
