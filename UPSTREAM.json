@@ -1,0 +1,10 @@
+{
+  "Hermes": {
+    "repository": "https://github.com/NousResearch/hermes-agent",
+    "commit": "79651b71bd56efd76d06f3de1df64dde09b58ff3"
+  },
+  "Paperclip": {
+    "repository": "https://github.com/paperclipai/paperclip",
+    "commit": "5b29b9062e9b877ef16660936c49d2c132ffc1ea"
+  }
+}
