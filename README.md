@@ -44,3 +44,11 @@ pnpm paperclip:start
 ```
 
 Open http://localhost:3100. This serves the compiled UI; the Vite development optimizer was observed to terminate the server during browser loading on this machine. The launcher uses an ASCII directory junction for bundled PostgreSQL, starts the local cluster, and creates self_agent_dev if absent. Existing databases are preserved. An explicit DATABASE_URL in the environment or Paperclip/.env selects an external database instead. PostgreSQL state remains under the user .paperclip directory; .env, database files, and built assets stay out of Git. LF line endings preserve upstream checksum and migration checks.
+
+## Hermes dashboard
+
+```powershell
+pnpm hermes:dashboard
+```
+
+Open http://127.0.0.1:9119. Hermes prepares its managed runtime and dashboard assets on first launch. Configure a model/provider in the dashboard before chatting.

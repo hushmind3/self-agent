@@ -12,7 +12,8 @@
     "hermes": ".venv/Scripts/hermes.exe",
     "hermes:install": "node -e \"const {spawnSync}=require('node:child_process');const {resolve}=require('node:path');process.exit(spawnSync('uv',['sync','--project','Hermes','--locked','--no-dev'],{stdio:'inherit',env:{...process.env,UV_PROJECT_ENVIRONMENT:resolve('.venv')}}).status??1)\"",
     "paperclip:prepare": "pnpm --filter @paperclipai/plugin-sdk build && pnpm --filter @paperclipai/paperclip-runner build:typescript && pnpm --filter @paperclipai/ui build",
-    "paperclip:start": "node paperclip-start.cjs"
+    "paperclip:start": "node paperclip-start.cjs",
+    "hermes:dashboard": ".venv/Scripts/hermes.exe dashboard --no-open"
   },
   "pnpm": {
     "patchedDependencies": {
