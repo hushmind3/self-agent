@@ -34,3 +34,13 @@ The entire tree is managed by one root Git repository. UPSTREAM.json records the
 Windows compatibility: the vendored Paperclip SDK linker uses directory junctions, so installing dependencies does not require Developer Mode or administrator symlink privileges.
 
 Paperclip package scripts use Git Bash (C:/Program Files/Git/bin/bash.exe), configured in .npmrc, for portable mkdir/cp/chmod commands on Windows.
+
+## Stable Paperclip startup on Windows
+
+```powershell
+pnpm install
+pnpm paperclip:prepare
+pnpm paperclip:start
+```
+
+Open http://localhost:3100. This serves the compiled UI; the Vite development optimizer was observed to terminate the server during browser loading on this machine. The launcher uses an ASCII directory junction for bundled PostgreSQL, starts the local cluster, and creates self_agent_dev if absent. Existing databases are preserved. An explicit DATABASE_URL in the environment or Paperclip/.env selects an external database instead. PostgreSQL state remains under the user .paperclip directory; .env, database files, and built assets stay out of Git. LF line endings preserve upstream checksum and migration checks.
